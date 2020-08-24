@@ -1,0 +1,36 @@
+table: users
+schema:
+  - field: name
+    migration:
+      type: varchar
+      limit: 255
+    validator:
+      - required
+      - min:10
+
+  - field: email
+    migration:
+      type: varchar
+      limit: 255
+    validator:
+      - required
+      - email
+
+  - field: password
+    migration:
+      type: varchar
+      limit: 30
+
+  - field: remember_token
+    migration:
+      type: varchar
+      limit: 120
+
+  - field: email_verified_at
+    migration:
+      type: varchar
+      limit: 120
+
+hidden:
+  - password
+  - remember_token

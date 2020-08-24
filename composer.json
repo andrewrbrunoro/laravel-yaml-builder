@@ -1,0 +1,39 @@
+{
+    "name": "andrewrbrunoro/laravel-yaml-builder",
+    "description": "Construa seus formulários utilizando sicronização com arquivos YAML.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew R Brunoro",
+            "email": "andrewrbrunoro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AndrewRBrunoro\\LaravelYamlBuilder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AndrewRBrunoro\\LaravelYamlBuilder\\Tests\\":"tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "orchestra/testbench": "^5.4"
+    },
+    "require": {
+      "ext-yaml": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AndrewRBrunoro\\LaravelYamlBuilder\\LaravelYamlBuilderServiceProvider"
+            ],
+            "aliases": {
+                "YamlBuilder": "AndrewRBrunoro\\LaravelYamlBuilder\\Facades\\YamlBuilder"
+            }
+        }
+    }
+}
