@@ -1,4 +1,5 @@
 <?php
+
 namespace AndrewRBrunoro\LaravelYamlBuilder\Tests\Feature;
 
 use AndrewRBrunoro\LaravelYamlBuilder\Facades\YamlBuilder;
@@ -6,11 +7,10 @@ use Orchestra\Testbench\TestCase;
 
 class YamlSupportTest extends TestCase
 {
-
     protected function getPackageProviders($app)
     {
         return [
-            'AndrewRBrunoro\LaravelYamlBuilder\LaravelYamlBuilderServiceProvider'
+            'AndrewRBrunoro\LaravelYamlBuilder\LaravelYamlBuilderServiceProvider',
         ];
     }
 
@@ -20,5 +20,4 @@ class YamlSupportTest extends TestCase
         YamlBuilder::setPath('schemas')
             ->sync('users.yaml');
     }
-
 }
