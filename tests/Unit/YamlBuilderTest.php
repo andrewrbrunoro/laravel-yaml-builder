@@ -1,18 +1,16 @@
 <?php
+
 namespace AndrewRBrunoro\LaravelYamlBuilder\Tests\Unit;
 
 use AndrewRBrunoro\LaravelYamlBuilder\Facades\YamlBuilder;
-use AndrewRBrunoro\LaravelYamlBuilder\LaravelYamlBuilder;
-use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase;
 
 class YamlBuilderTest extends TestCase
 {
-
     protected function getPackageProviders($app)
     {
         return [
-            'AndrewRBrunoro\LaravelYamlBuilder\LaravelYamlBuilderServiceProvider'
+            'AndrewRBrunoro\LaravelYamlBuilder\LaravelYamlBuilderServiceProvider',
         ];
     }
 
@@ -74,5 +72,4 @@ class YamlBuilderTest extends TestCase
     {
         $this->assertFalse(YamlBuilder::extensionValidate('users.json'));
     }
-
 }
