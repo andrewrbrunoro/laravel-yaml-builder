@@ -1,0 +1,12 @@
+<div class="table-responsive">
+  <table class="table">
+    ${table_head}
+  </table>
+  <tbody>
+    @foreach($rows as $row)
+        <tr>
+            ${table_body}
+        </tr>
+    @endforeach
+  </tbody>
+</div>

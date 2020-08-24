@@ -1,0 +1,24 @@
+@extends('template')
+
+@section('content')
+<div class="container">
+    <div class="card-body">
+        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+            <thead>
+                <tr>
+                    ${table_head}
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($paginate as $data)
+                    <tr>
+                        ${table_body}
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    
+    {{$paginate->withQueryString()->links()}}
+</div>
+@endsection

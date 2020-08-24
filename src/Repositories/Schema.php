@@ -15,7 +15,7 @@ class Schema
         $this->prepare();
     }
 
-    private function prepare()
+    private function prepare() : void
     {
         foreach ($this->schema as $item) {
             $this->setFields($item);
@@ -30,5 +30,10 @@ class Schema
     public function getFields(): array
     {
         return $this->fields;
+    }
+
+    public function outputModel()
+    {
+
     }
 }

@@ -27,6 +27,7 @@ class Yaml implements Signature
     public function parse(array $yaml_parse)
     {
         if ($this->validateParse($yaml_parse)) {
+
             $table = new Table($yaml_parse['table']);
             $schema = new Schema($yaml_parse['schema']);
 
