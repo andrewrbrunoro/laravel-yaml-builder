@@ -9,6 +9,7 @@ php:
 #    - COMPOSER_FLAGS=""
 
 before_script:
+  - travis_retry composer install
 #  - travis_retry composer update ${COMPOSER_FLAGS}
   - travis_retry composer update
 
