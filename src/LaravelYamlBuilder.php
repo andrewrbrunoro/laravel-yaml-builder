@@ -1,4 +1,5 @@
 <?php
+
 namespace AndrewRBrunoro\LaravelYamlBuilder;
 
 use AndrewRBrunoro\LaravelYamlBuilder\Support\Yaml;
@@ -7,13 +8,12 @@ use Illuminate\Support\Facades\File;
 
 class LaravelYamlBuilder
 {
-
     private $schemaName;
 
-    private $path = "schemas";
+    private $path = 'schemas';
 
     private const TYPES = [
-        'yaml'
+        'yaml',
     ];
 
     /**
@@ -22,16 +22,15 @@ class LaravelYamlBuilder
      */
     public function sync(
         string $schema_name
-    ) : void
-    {
+    ): void {
         $this->setSchemaName($schema_name);
 
         switch (File::extension($schema_name)) {
-            case "yaml":
+            case 'yaml':
                 new Yaml($this);
                 break;
             default:
-                throw new Exception(sprintf("Unexpected EXTENSION: %s", $this->getSchemaName()));
+                throw new Exception(sprintf('Unexpected EXTENSION: %s', $this->getSchemaName()));
         }
     }
 
@@ -39,7 +38,7 @@ class LaravelYamlBuilder
      * @param string $schema_name
      * @return $this
      */
-    public function setSchemaName(string $schema_name) : self
+    public function setSchemaName(string $schema_name): self
     {
         if ($this->extensionValidate($schema_name)) {
             $this->schemaName = $schema_name;
@@ -51,7 +50,7 @@ class LaravelYamlBuilder
     /**
      * @return string
      */
-    public function getSchemaName() : string
+    public function getSchemaName(): string
     {
         return $this->schemaName;
     }
@@ -60,7 +59,7 @@ class LaravelYamlBuilder
      * @param string $path
      * @return $this
      */
-    public function setPath(string $path) : self
+    public function setPath(string $path): self
     {
         $this->path = $path;
 
@@ -70,30 +69,30 @@ class LaravelYamlBuilder
     /**
      * @return string
      */
-    public function getPath() : string
+    public function getPath(): string
     {
         return $this->path;
     }
 
     /**
-     * {ROOT}/{$this->path}/*.yaml
+     * {ROOT}/{$this->path}/*.yaml.
      *
      * @return string
      * @throws Exception
      */
-    public function getSchemaFullPath() : string
+    public function getSchemaFullPath(): string
     {
-        if (!$this->schemaName) {
-            throw new Exception(sprintf("Schema not found in %s", $this->getPath() . DIRECTORY_SEPARATOR . $this->schemaName));
+        if (! $this->schemaName) {
+            throw new Exception(sprintf('Schema not found in %s', $this->getPath().DIRECTORY_SEPARATOR.$this->schemaName));
         } else {
-            return $this->getPath() . DIRECTORY_SEPARATOR . $this->schemaName;
+            return $this->getPath().DIRECTORY_SEPARATOR.$this->schemaName;
         }
     }
 
     /**
      * @return string
      */
-    public function getAvailableExtensions() : string
+    public function getAvailableExtensions(): string
     {
         return implode(',', self::TYPES);
     }
@@ -102,7 +101,7 @@ class LaravelYamlBuilder
      * @return bool
      * @throws Exception
      */
-    public function schemaFileExists() : bool
+    public function schemaFileExists(): bool
     {
         return file_exists($this->getSchemaFullPath());
     }
@@ -111,9 +110,8 @@ class LaravelYamlBuilder
      * @param string $schema_name
      * @return bool
      */
-    public function extensionValidate(string $schema_name) : bool
+    public function extensionValidate(string $schema_name): bool
     {
         return in_array(File::extension($schema_name), self::TYPES);
     }
-
 }

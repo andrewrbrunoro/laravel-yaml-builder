@@ -1,4 +1,5 @@
 <?php
+
 namespace AndrewRBrunoro\LaravelYamlBuilder\Repositories;
 
 class Field

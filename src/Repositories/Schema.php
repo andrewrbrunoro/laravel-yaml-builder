@@ -1,4 +1,5 @@
 <?php
+
 namespace AndrewRBrunoro\LaravelYamlBuilder\Repositories;
 
 class Schema
@@ -21,12 +22,12 @@ class Schema
         }
     }
 
-    public function setFields(array $field_attributes) : void
+    public function setFields(array $field_attributes): void
     {
         $this->fields[] = new Field($field_attributes);
     }
 
-    public function getFields() : array
+    public function getFields(): array
     {
         return $this->fields;
     }
