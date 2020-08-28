@@ -11,9 +11,14 @@ class Field
         $this->field = $field_attributes;
     }
 
+    public function isPrimaryKey()
+    {
+        return isset($this->field['primaryKey']);
+    }
+
     public function getName()
     {
-        return $this->field['name'];
+        return $this->field['field'];
     }
 
     public function getMigration()
@@ -21,8 +26,8 @@ class Field
         return $this->field['migration'];
     }
 
-    public function getValidator()
+    public function getValidator() : array
     {
-        return $this->field['validator'];
+        return !isset($this->field['validator']) ? [] : $this->field['validator'];
     }
 }

@@ -1,4 +1,33 @@
 table: users
+
+permissions:
+  - criar usuario
+  - editar usuario
+  - listar usuarios
+  - remover usuario
+
+groups:
+  - name: super admin
+    permissions: *
+
+  - name: admin
+    permissions:
+      - listar usuarios
+      - criar usuario
+
+views:
+  index:
+    title: Lista de usuários
+    thead:
+      - name
+      - email
+
+  create:
+    title: Criar usuário
+
+  edit:
+    title: Editar usuário
+
 schema:
   - field: name
     migration:
@@ -10,6 +39,7 @@ schema:
 
   - field: email
     migration:
+      unique: true
       type: varchar
       limit: 255
     validator:

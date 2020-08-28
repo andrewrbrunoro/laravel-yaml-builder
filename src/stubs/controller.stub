@@ -1,0 +1,66 @@
+<?php
+namespace App\Http\Controllers;
+
+use Exception;
+
+class ${controllerName} extends Controller {
+
+    public function index ()
+    {
+        return view('${pathToView}.${view}');
+    }
+
+    public function create ()
+    {
+        return view('${pathToView}.${view}');
+    }
+
+    public function store (${modelName} $entity, ${requestName} $request)
+    {
+        try {
+
+            $result = $entity->create($request->all());
+
+            if (!$result) {
+                throw new Exception(__('Falha ao criar o registro, tente novamente.'));
+            }
+
+            return redirect()
+                ->route('${route}.index')
+                ->with('success', __('Registro salvo com sucesso.'));
+        } catch (Exception $e) {
+            report($e);
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
+        }
+    }
+
+    public function edit (string $id)
+    {
+        $edit = ${modelName}::findOrFail($id);
+
+        return view('${pathToView}.${view}', $edit);
+    }
+
+    public function update (string $id, ${modelName} $entity)
+    {
+        try {
+
+            $edit = $entity->findOrFail($id);
+            if (!$edit) {
+                throw new Exception(__('Registro não encontrado!'));
+            }
+
+            return redirect()
+                ->route('${route}.index')
+                ->with('success', __('Registro atualizado com sucesso.'));
+        } catch(Exception $e) {
+            report($e);
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
+        }
+    }
+
+}

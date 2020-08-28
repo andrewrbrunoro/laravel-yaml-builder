@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ${model} extends Model
 {
-    ${fillable}
+    protected $fillable = [${fillable}];
 
-    ${hidden}
+    protected $hidden = [${hidden}];
 
-    ${casts}
+    protected $casts = [${casts}];
 }

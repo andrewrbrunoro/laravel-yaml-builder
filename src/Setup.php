@@ -15,14 +15,19 @@ class Setup
         $this->syncStubs();
     }
 
-    public function syncStubs()
+    private function syncStubs()
     {
-
+        $this->model();
     }
 
-    public function index()
+    private function model() : string
     {
+        $fillable = [];
+        foreach ($this->schema->getFields() as $field) {
+            $fillable[] = $field['name'];
+        }
 
+        $fillable = implode(',\n', $fillable);
     }
 
 }

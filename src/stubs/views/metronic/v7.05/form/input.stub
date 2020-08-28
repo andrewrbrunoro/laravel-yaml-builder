@@ -1,0 +1,17 @@
+<label class="col-form-label col-3 text-lg-right text-left">
+    {{__('Nova senha')}}
+</label>
+<div class="col-9">
+    <input class="form-control form-control-lg form-control-solid"
+           name="password"
+           placeholder="{{__('Digite a senha')}}"
+           type="password" />
+</div>
+
+<input name="${name}"
+       id="${name}"
+       dusk="${dusk}"
+       type="${type}"
+       class="${class}"
+       placeholder="${placeholder}" />
+

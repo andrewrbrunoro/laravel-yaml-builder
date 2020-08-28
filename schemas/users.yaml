@@ -1,35 +1,68 @@
 table: users
+
+permissions:
+  - criar usuario
+  - editar usuario
+  - listar usuarios
+  - remover usuario
+
+groups:
+  - name: super admin
+    permissions: '*'
+    
+  - name: admin
+    permissions: 
+      - listar usuarios
+      - criar usuario  
+
+views:
+  - view: index
+    title: Lista de usuários
+    thead:
+      - name
+      - email
+  
+  - view: create
+    title: Criar usuário
+  
+  - view: edit
+    title: Editar usuário
+
 schema:
-- field: name
-  migration:
-    type: varchar
-    limit: 255
-  validator:
-    - required
-    - min:10
+  - field: id
+    primaryKey: true
+    
+  - field: name
+    migration:
+      type: varchar
+      limit: 255
+    validator:
+      - required
+      - min:10
 
-- field: email
-  migration:
-    type: varchar
-    limit: 255
-  validator:
-    - required
-    - email
+  - field: email
+    migration:
+      unique: true
+      type: varchar
+      limit: 255
+    validator:
+      - required
+      - email
 
-- field: password
-  migration:
-    type: varchar
-    limit: 30
+  - field: password
+    migration:
+      type: varchar
+      limit: 30
 
-- field: remember_token
-  migration:
-    type: varchar
-    limit: 120
+  - field: remember_token
+    migration:
+      type: varchar
+      limit: 120
 
-- field: email_verified_at
-  migration:
-    type: varchar
-    limit: 120
+  - field: email_verified_at
+    migration:
+      type: varchar
+      limit: 120
 
 hidden:
   - password

@@ -1,8 +1,15 @@
 # Laravel Yaml Builder  
-[![StyleCI](https://github.styleci.io/repos/288866491/shield?branch=master)](https://github.styleci.io/repos/288866491?branch=master) 
-[![Build Status](https://travis-ci.org/andrewrbrunoro/laravel-yaml-builder.svg?branch=master)](https://travis-ci.org/andrewrbrunoro/laravel-yaml-builder)
+
+Este pacote inicialmente ele é um projeto pessoal, porém, acho que pode caber em sua necessidade de desenvolvimento.  
+O intuito é poder gerar os arquivos de CRUD utilizando a formatação do YAML, também sempre deixar totalmente livre para o gerenciamento dos arquivos gerados pelo pacote.  
   
-Crie seu CRUD completo utilizando YAML e regras pré-definidas.  
+- O pacote não está com padrão de desenvolvimento
+
+Primeiramente  
+O pacote é um MVP!  
+
+Segundo  
+Buscar sempre a simplicidade  
   
 ## LICENSE  
 [MIT](./LICENSE.md)
