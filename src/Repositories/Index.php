@@ -9,6 +9,8 @@ class Index
 
     private $view;
 
+    const FILENAME = 'index.blade.php';
+
     public function __construct(View $view)
     {
         $this->view = $view;
@@ -16,7 +18,7 @@ class Index
 
     public function getStubName()
     {
-        return 'views/' . config('laravel-yaml-builder.theme') . '/index.stub';
+        return config('laravel-yaml-builder.theme') . '/index.stub';
     }
 
     public function getThead() : string

@@ -1,0 +1,3 @@
+<?php
+Route::resource('${route}', '${namespace}')
+    ->except(['show']);

@@ -1,17 +1,13 @@
-<label class="col-form-label col-3 text-lg-right text-left">
-    {{__('Nova senha')}}
-</label>
-<div class="col-9">
-    <input class="form-control form-control-lg form-control-solid"
-           name="password"
-           placeholder="{{__('Digite a senha')}}"
-           type="password" />
+<div class="form-group>
+    <label>
+        ${title}
+    </label>
+    <input name="${name}"
+           id="${name}"
+           dusk="${dusk}"
+           type="${type}"
+           ${required}
+           value="{{old('${name}')}}"
+           class="form-control form-control-solid{{$errors->first('${name}') ? ' is-invalid' : ''}}" />
+    {!! $errors->first('${name}', '<span class="text-danger help-block">:message</span>') !!}
 </div>
-
-<input name="${name}"
-       id="${name}"
-       dusk="${dusk}"
-       type="${type}"
-       class="${class}"
-       placeholder="${placeholder}" />
-

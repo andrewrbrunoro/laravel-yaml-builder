@@ -15,6 +15,19 @@
                     @foreach($paginate as $data)
                         <tr>
                             ${tbody}
+                            <td>
+                                <a href="{{route('${route}.edit', $data->id)}}">
+                                    Editar
+                                </a>
+                                <form method="POST" class="form-inline"
+                                      action="{{route('${route}.destroy')}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        Deletar
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

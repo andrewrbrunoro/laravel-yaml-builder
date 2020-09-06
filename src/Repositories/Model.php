@@ -2,9 +2,6 @@
 
 namespace AndrewRBrunoro\LaravelYamlBuilder\Repositories;
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-
 class Model
 {
 
@@ -20,6 +17,11 @@ class Model
     {
         $this->table = $table;
         $this->schema = $schema;
+    }
+
+    public function getFields()
+    {
+        return $this->schema->getFields();
     }
 
     public function setStubName(string $stub_name) : void
@@ -46,17 +48,6 @@ class Model
         }
 
         return $this->quickImplode($fillable);
-    }
-
-    public function getHidden()
-    {
-        $hidden = [];
-
-        foreach ($this->schema->getHidden() as $field) {
-            $hidden[] = $field;
-        }
-
-        return $this->quickImplode($hidden);
     }
 
     public function getCasts() : string

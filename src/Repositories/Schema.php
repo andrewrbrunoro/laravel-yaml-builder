@@ -23,7 +23,6 @@ class Schema
     private function prepare() : void
     {
         $this->readSchema();
-        $this->readHidden();
         $this->readCasts();
 
         if (!$this->hasPrimaryKey()) {
@@ -35,13 +34,6 @@ class Schema
     {
         foreach ($this->schema as $item) {
             $this->setFields($item);
-        }
-    }
-
-    private function readHidden()
-    {
-        foreach ($this->hidden as $item) {
-            $this->setHidden($item);
         }
     }
 
@@ -62,18 +54,11 @@ class Schema
         }
     }
 
-    public function setHidden(string $hidden) : void
-    {
-        $this->hidden[] = $hidden;
-    }
-
-    public function getHidden() : array
-    {
-        return $this->hidden;
-    }
-
     public function setFields(array $field_attributes): void
     {
+        if (isset($field_attributes['migration']))
+            $field_attributes['migration'] = new Migration($field_attributes['migration']);
+
         $this->fields[] = new Field($field_attributes);
     }
 

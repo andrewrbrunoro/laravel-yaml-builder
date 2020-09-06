@@ -6,11 +6,18 @@ use Illuminate\Support\Str;
 class Route
 {
 
+    use Repository;
+
     private $table;
 
     public function __construct(Table $table)
     {
         $this->table = $table;
+    }
+
+    public function getStubName()
+    {
+        return 'route.stub';
     }
 
     public function getPathView() : string
@@ -56,6 +63,21 @@ class Route
     public function getDeleteRoute()
     {
         return $this->getBaseRoute('destroy');
+    }
+
+    public function getNameSpace()
+    {
+        return sprintf('App\Http\Controllers\%s', Str::ucfirst($this->getRouteName()));
+    }
+
+    public function make() : string
+    {
+        $stub = $this->getStubFile($this->getStubName());
+
+        return str_var_replace($stub, [
+            'route' => $this->getRouteName(),
+            'namespace' => $this->getNameSpace()
+        ]);
     }
 
 }

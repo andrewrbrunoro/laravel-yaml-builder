@@ -30,9 +30,11 @@ views:
 
 schema:
   - field: id
-    primaryKey: true
+    migration:
+      primaryKey: true
     
   - field: name
+    title: Nome
     migration:
       type: varchar
       limit: 255
@@ -41,6 +43,7 @@ schema:
       - min:10
 
   - field: email
+    title: E-mail
     migration:
       unique: true
       type: varchar
@@ -50,20 +53,30 @@ schema:
       - email
 
   - field: password
+    title: Senha
     migration:
       type: varchar
       limit: 30
+    validator:
+      - required
+      - max:30
+      - confirm
+
+  - field: confirmed_password
+    title: Digite novamente a senha
+    migration:
+      type: varchar
+      limit: 30
+      only_validation: true
 
   - field: remember_token
+    hidden: true
     migration:
       type: varchar
       limit: 120
 
   - field: email_verified_at
+    hidden: true
     migration:
       type: varchar
       limit: 120
-
-hidden:
-  - password
-  - remember_token
