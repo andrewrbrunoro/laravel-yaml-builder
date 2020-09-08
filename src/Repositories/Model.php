@@ -68,7 +68,7 @@ class Model
         return str_var_replace($stub, [
             'model' => $this->table->getStudlySingularName(),
             'fillable' => $this->getFillable(),
-            'hidden' => $this->getHidden(),
+            'hidden' => "",
             'casts' => $this->getCasts()
         ]);
     }

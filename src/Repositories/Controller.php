@@ -23,6 +23,11 @@ class Controller
         $this->make();
     }
 
+    public function getControllerName()
+    {
+        return $this->model->getModelName() . 'Controller';
+    }
+
     public function getStubName() : string
     {
         return $this->stubName;
@@ -33,8 +38,10 @@ class Controller
         $stub = $this->getStubFile($this->getStubName());
 
         return str_var_replace($stub, [
+            'controllerName' => $this->getControllerName(),
             'modelName' => $this->model->getModelName(),
-            'pathToView' => $this->route->getPathView()
+            'pathToView' => $this->route->getPathView(),
+            'requestName' => sprintf('%sRequest', $this->model->getModelName())
         ]);
     }
 

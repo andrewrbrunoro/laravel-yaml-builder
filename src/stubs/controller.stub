@@ -1,18 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\${requestName};
+use App\${modelName};
 use Exception;
 
 class ${controllerName} extends Controller {
 
     public function index ()
     {
-        return view('${pathToView}.${view}');
+        return view('${pathToView}.index');
     }
 
     public function create ()
     {
-        return view('${pathToView}.${view}');
+        return view('${pathToView}.create');
     }
 
     public function store (${modelName} $entity, ${requestName} $request)
@@ -40,7 +42,7 @@ class ${controllerName} extends Controller {
     {
         $edit = ${modelName}::findOrFail($id);
 
-        return view('${pathToView}.${view}', $edit);
+        return view('${pathToView}.edit', $edit);
     }
 
     public function update (string $id, ${modelName} $entity)

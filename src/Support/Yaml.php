@@ -71,6 +71,21 @@ class Yaml implements Signature
                 }
             }
 
+            $form = new Form($schema);
+            new Write($form, $pathName, FORM::FILENAME);
+
+            new Write(
+                $controller,
+                'app/Http/Controllers',
+                sprintf('%s.php', $controller->getControllerName())
+            );
+
+            new Write(
+                $model,
+                'app',
+                sprintf('%s.php', $model->getModelName())
+            );
+
 
         } else {
             report(new \Exception('Error'));
